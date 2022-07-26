@@ -1,0 +1,44 @@
+.movie-select {
+    margin: 40px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.date {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.select-hour {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hour {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 83px;
+    height: 43px;
+    background-color: #E8833A;
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedules {
+    margin-left: 10px;
+}

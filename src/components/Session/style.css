@@ -1,0 +1,75 @@
+.title-session {
+    margin: 30px 0; 
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #293845;
+}
+
+.seat {
+    width: 26px;
+    height: 26px;
+    background-color: #C3CFD9;
+    border: 1px solid #808F9D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin: 5px 4px;
+}
+
+.places {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.legend {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.legend .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.legend div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.legend p {
+    margin-top: 10px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #4E5A65;
+}
+
+.legend :nth-child(1) .circle {
+    background-color: #8DD7CF;
+    border: 1px solid #1AAE9E;
+}
+
+.legend :nth-child(2) .circle {
+    background-color: #C3CFD9;
+    border: 1px solid #7B8B99;
+}
+
+.legend :nth-child(3) .circle{
+    background-color: #FBE192;
+    border: 1px solid #F7C52B;
+}

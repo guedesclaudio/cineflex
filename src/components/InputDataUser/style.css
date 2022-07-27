@@ -1,0 +1,22 @@
+.inputs {
+    width: 372px;
+    margin: 20px auto;
+}
+
+input {
+    width: 372px;
+    height: 51px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    outline: none;
+}
+
+.name-user, .cpf-user {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #293845;
+}

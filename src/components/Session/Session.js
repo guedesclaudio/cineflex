@@ -13,7 +13,6 @@ export default function Session() {
 
     return (
         <>
-            <Logo/>
             <h1 className = "title-session">Selecione o(s) assentos(s)</h1>
             <div className = "places">
                 {places.map((value, index)=> <Seat key = {index} place = {value}/>)}

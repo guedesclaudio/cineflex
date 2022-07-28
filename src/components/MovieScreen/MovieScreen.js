@@ -22,7 +22,6 @@ function Schedule() {
 export default function MovieScreen() {
     return (
         <>
-            <Logo/>
             <div className = "movie-select">Selecione o horário</div>
             <div className = "schedules">
                 <Schedule/>

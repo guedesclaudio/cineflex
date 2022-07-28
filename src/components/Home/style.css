@@ -17,6 +17,11 @@
 .movies div {
     width: 129px;
     height: 193px;
-    background-color: black;
     margin-bottom: 15px;
+    border: 1px solid black;
+}
+
+.movies img {
+    width: 129px;
+    height: 193px;
 }

@@ -5,6 +5,18 @@
     border-radius: 3px;
     margin: 0 auto;
     cursor: pointer;
+    margin-bottom: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button h1 {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .button:hover {

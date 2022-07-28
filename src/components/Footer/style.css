@@ -5,4 +5,31 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.footer .frame {
+    width: 64px;
+    height: 89px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    margin-left: 20px;
+}
+
+.footer img {
+    width: 48px;
+    height: 72px;
+}
+
+.footer h1 {
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #293845;
+    line-height: 30px;
+    margin-left: 20px;
 }

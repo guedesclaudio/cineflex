@@ -16,8 +16,8 @@ export default function App() {
 			<Logo/>
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/moviescreen" element={<MovieScreen />}/>
-                <Route path="/session" element={<Session />}/>
+				<Route path="/moviescreen/:idMovie" element={<MovieScreen />}/>
+                {<Route path="/session/:idSeats" element={<Session />}/>}
 			</Routes>
 		</BrowserRouter>
     )

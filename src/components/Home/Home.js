@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 import Logo from "../Logo/Logo.js"
 import "./style.css"
 
 function Movie({
-    key,
+    id,
     titleMovie,
     image
 }) {
     return (
-        <Link to = "/moviescreen">
+        <Link to = {`/moviescreen/${id}`}>
             <div>
                 <img src = {image}/>
             </div>
@@ -21,11 +22,13 @@ function Movie({
 
 export default function Home() {
 
-    const linkApi = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
+    
+
+    const linkApiMovies = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
-        const promise = axios.get(linkApi)
+        const promise = axios.get(linkApiMovies)
 
         promise.then(answerServer => {
             setMovies(answerServer.data)
@@ -37,7 +40,7 @@ export default function Home() {
         <>
             <div className = "title-select">Selecione o filme</div>
             <div className = "movies">
-                {movies.map(value => <Movie key = {value.id} titleMovie = {value.title} image = {value.posterURL}/>)}
+                {movies.map(value => <Movie key = {value.id} id = {value.id}titleMovie = {value.title} image = {value.posterURL}/>)}
             </div>
         </>
     )

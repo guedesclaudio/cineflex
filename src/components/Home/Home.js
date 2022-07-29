@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-
-import Logo from "../Logo/Logo.js"
 import "./style.css"
 
 function Movie({
@@ -32,7 +29,6 @@ export default function Home() {
 
         promise.then(answerServer => {
             setMovies(answerServer.data)
-            console.log(answerServer.data)
         })
     }, [])
 
@@ -40,7 +36,7 @@ export default function Home() {
         <>
             <div className = "title-select">Selecione o filme</div>
             <div className = "movies">
-                {movies.map(value => <Movie key = {value.id} id = {value.id}titleMovie = {value.title} image = {value.posterURL}/>)}
+                {movies.map(value => <Movie key = {value.id} id = {value.id} titleMovie = {value.title} image = {value.posterURL}/>)}
             </div>
         </>
     )

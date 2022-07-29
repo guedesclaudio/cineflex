@@ -1,6 +1,6 @@
 import "./style.css"
 import Footer from "../Footer/Footer.js"
-import Button from "../Button/Button.js"
+
 import InputDataUser from "../InputDataUser/InputDataUser.js"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
@@ -8,24 +8,37 @@ import axios from 'axios';
 
 function Seat({
     place,
-    isAvailable
+    isAvailable,
+    chosenSeat,
+    setChosenSeat
 }) {
+
+    const [condition, setCondition] = useState(isAvailable ? "seat available" : "seat unavailable")
+
+    function selectSeat() {
+        if (isAvailable) {
+            setCondition("seat choosen")
+            setChosenSeat([... chosenSeat, place])
+        }
+    }
+
     return (
-        <div className = {isAvailable ? "seat available" : "seat unavailable"}>
+        <div className = {condition} onClick = {selectSeat}>
             {place}
         </div>
     )
 }
 
-export default function Session() {
+export default function Session({setDataUser, dataUser}) {
 
+    const [chosenSeat, setChosenSeat] = useState([])
     const [seats, setSeats] = useState([])
     const [movieTitle, setMovieTitle] = useState("")
     const [movieImage, setMovieImage] = useState("")
     const [movieDay, setMovieDay] = useState("")
+    const [movieDate, setMovieDate] = useState("")
     const [movieTime, setMovieTime] = useState("")
     const {idSeats} = useParams()
-    console.log(idSeats)
 
     const linkApiMoviesSeats = `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSeats}/seats`
 
@@ -38,8 +51,8 @@ export default function Session() {
             setMovieImage(answerServer.data.movie.posterURL)
             setMovieImage(answerServer.data.movie.posterURL)
             setMovieDay(answerServer.data.day.weekday)
+            setMovieDate(answerServer.data.day.date)
             setMovieTime(answerServer.data.name)
-            console.log(answerServer.data.seats)
             console.log(answerServer.data)
         })
     }, [])
@@ -48,7 +61,9 @@ export default function Session() {
         <>
             <h1 className = "title-session">Selecione o(s) assentos(s)</h1>
             <div className = "places">
-                {seats.map((value, index)=> <Seat key = {index} place = {value.name} isAvailable = {value.isAvailable}/>)}
+                {seats.map((value, index)=> <Seat key = {index} place = {value.name} 
+                isAvailable = {value.isAvailable} 
+                chosenSeat = {chosenSeat} setChosenSeat = {setChosenSeat}/>)}
             </div>
             <div className = "legend">
                 <div>
@@ -64,21 +79,15 @@ export default function Session() {
                     <p>Indisponível</p>
                 </div>
             </div>
-            <InputDataUser/>
+            <InputDataUser chosenSeat = {chosenSeat} dataUser = {dataUser} setDataUser = {setDataUser} 
+            movieTitle = {movieTitle} movieDay = {movieDay} movieTime = {movieTime} movieDate = {movieDate}/>
             <Footer>
-                <>
                     <div className = "frame"><img src = {movieImage} alt = "..."/></div>
                     <div>
                         <h1>{movieTitle}</h1>
                         <h1>{movieDay} - {movieTime}</h1>
                     </div>
-                    
-                </>
             </Footer>
-            <Button>
-                <h1>Reservar assento(s)</h1>   
-            </Button>
         </>
-        
     )
 }

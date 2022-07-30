@@ -1,12 +1,12 @@
-import "./style.css"
-import Button from "../Button/Button"
 import { Link } from "react-router-dom";
+import Button from "../Button/Button"
+import "./style.css"
 
 export default function SuccesScreen({
     dataUser
 }) {
-    console.log(dataUser)
-    const places = dataUser.ids //bug aqui
+    
+    const places = dataUser.ids 
 
     return(
         <div >
@@ -20,7 +20,7 @@ export default function SuccesScreen({
             </div>
             <div className = "movie-session">
                 <h3>Ingressos</h3>
-                {places.map((value, index) => <p key = {index}>Assento {value}</p>)}
+                {places ?  places.map((value, index) => <p key = {index}>Assento {value}</p>) : "carregando dados..."}
             </div>
             <div className = "movie-session">
                 <h3>Comprador</h3>

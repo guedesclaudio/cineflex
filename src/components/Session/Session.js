@@ -1,10 +1,9 @@
-import "./style.css"
-import Footer from "../Footer/Footer.js"
-
-import InputDataUser from "../InputDataUser/InputDataUser.js"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Footer from "../Footer/Footer.js"
+import InputDataUser from "../InputDataUser/InputDataUser.js"
+import "./style.css"
 
 function Seat({
     place,
@@ -15,10 +14,24 @@ function Seat({
 
     const [condition, setCondition] = useState(isAvailable ? "seat available" : "seat unavailable")
 
+
     function selectSeat() {
+        //console.log(place)
         if (isAvailable) {
-            setCondition("seat choosen")
-            setChosenSeat([... chosenSeat, place])
+            condition === "seat available" ? setCondition("seat choosen") : setCondition("seat available")
+            
+            if (!chosenSeat.includes(Number(place))) {
+                setChosenSeat([... chosenSeat, Number(place)])
+            }
+            else {
+                console.log('desmarcando')
+                setChosenSeat([...chosenSeat.splice(chosenSeat.indexOf(place),1)]) // nao da certo remover desse jeito
+            } 
+            
+            
+        }
+        else {
+            alert("Esse assento não está disponível")
         }
     }
 
@@ -53,7 +66,6 @@ export default function Session({setDataUser, dataUser}) {
             setMovieDay(answerServer.data.day.weekday)
             setMovieDate(answerServer.data.day.date)
             setMovieTime(answerServer.data.name)
-            console.log(answerServer.data)
         })
     }, [])
 

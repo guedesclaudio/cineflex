@@ -5,7 +5,6 @@ import "./style.css"
 
 function Movie({
     id,
-    titleMovie,
     image
 }) {
     return (
@@ -21,7 +20,7 @@ export default function Home() {
 
     
 
-    const linkApiMovies = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
+    const linkApiMovies = "https://mock-api.driven.com.br/api/v7/cineflex/movies"
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
@@ -36,7 +35,7 @@ export default function Home() {
         <>
             <div className = "title-select">Selecione o filme</div>
             <div className = "movies">
-                {movies.map(value => <Movie key = {value.id} id = {value.id} titleMovie = {value.title} image = {value.posterURL}/>)}
+                {movies.map(value => <Movie key = {value.id} id = {value.id} image = {value.posterURL}/>)}
             </div>
         </>
     )

@@ -18,18 +18,21 @@ export default function InputDataUser({
     const [cpf, setCpf] = useState("")
     const linkApiSendData = "https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
     const navigate = useNavigate()
+    //console.log(chosenSeat)
 
     function receiveEvent(event) {
         event.preventDefault()
         generateObject()
-        sendData()
+        //sendData()
+        navigate("/succes")
     }
 
     function generateObject() {
+        console.log(chosenSeat)
         console.log("fui chamado")
         setDataUser({ 
             ...dataUser, 
-            ids : chosenSeat, 
+            ids : chosenSeat.map(value => value.place), 
             name,
             cpf, 
             movieTitle, 
@@ -41,7 +44,7 @@ export default function InputDataUser({
 
     function sendData() {
         const promise = axios.post(linkApiSendData, { //nao ta dando post
-            ids : chosenSeat, 
+            ids : chosenSeat.map(value => value.id), 
             name, 
             cpf,
         })

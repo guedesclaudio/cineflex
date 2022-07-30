@@ -7,7 +7,7 @@ export default function SuccesScreen({
 }) {
     
     const places = dataUser.ids 
-
+    console.log(dataUser.ids)
     return(
         <div >
             <div className = "succes">

@@ -9,25 +9,46 @@ function Seat({
     place,
     isAvailable,
     chosenSeat,
-    setChosenSeat
+    setChosenSeat,
+    id,
+    places,
+    setPlaces
 }) {
 
     const [condition, setCondition] = useState(isAvailable ? "seat available" : "seat unavailable")
-
-
+    const [escolhido, setEscolhido] = useState(true)
+    const objeto = {
+            id,
+            place,
+            escolhido
+        }
+    
+    
     function selectSeat() {
+        
+        setEscolhido(!escolhido)
+        
+        //console.log(objeto)
         //console.log(place)
         if (isAvailable) {
             condition === "seat available" ? setCondition("seat choosen") : setCondition("seat available")
             
-            if (!chosenSeat.includes(Number(place))) {
-                setChosenSeat([... chosenSeat, Number(place)])
+            if (!places.includes(place)) {
+                setChosenSeat([... chosenSeat, objeto])
+                setPlaces([...places, place])
+            }
+            
+            
+            
+            /*
+            if (!chosenSeat.includes(id)) {
+                setChosenSeat([... chosenSeat, id])
             }
             else {
                 console.log('desmarcando')
                 setChosenSeat([...chosenSeat.splice(chosenSeat.indexOf(place),1)]) // nao da certo remover desse jeito
             } 
-            
+            */
             
         }
         else {
@@ -45,6 +66,7 @@ function Seat({
 export default function Session({setDataUser, dataUser}) {
 
     const [chosenSeat, setChosenSeat] = useState([])
+    const [places, setPlaces] = useState([])
     const [seats, setSeats] = useState([])
     const [movieTitle, setMovieTitle] = useState("")
     const [movieImage, setMovieImage] = useState("")
@@ -52,6 +74,8 @@ export default function Session({setDataUser, dataUser}) {
     const [movieDate, setMovieDate] = useState("")
     const [movieTime, setMovieTime] = useState("")
     const {idSeats} = useParams()
+
+    
 
     const linkApiMoviesSeats = `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSeats}/seats`
 
@@ -74,7 +98,7 @@ export default function Session({setDataUser, dataUser}) {
             <h1 className = "title-session">Selecione o(s) assentos(s)</h1>
             <div className = "places">
                 {seats.map((value, index)=> <Seat key = {index} place = {value.name} 
-                isAvailable = {value.isAvailable} 
+                isAvailable = {value.isAvailable} id = {value.id} places = {places} setPlaces = {setPlaces}
                 chosenSeat = {chosenSeat} setChosenSeat = {setChosenSeat}/>)}
             </div>
             <div className = "legend">

@@ -16,40 +16,22 @@ function Seat({
 }) {
 
     const [condition, setCondition] = useState(isAvailable ? "seat available" : "seat unavailable")
-    const [escolhido, setEscolhido] = useState(true)
-    const objeto = {
-            id,
-            place,
-            escolhido
-        }
-    
     
     function selectSeat() {
         
-        setEscolhido(!escolhido)
-        
-        //console.log(objeto)
-        //console.log(place)
         if (isAvailable) {
             condition === "seat available" ? setCondition("seat choosen") : setCondition("seat available")
             
             if (!places.includes(place)) {
-                setChosenSeat([... chosenSeat, objeto])
+                setChosenSeat([... chosenSeat, id])
                 setPlaces([...places, place])
             }
-            
-            
-            
-            /*
-            if (!chosenSeat.includes(id)) {
-                setChosenSeat([... chosenSeat, id])
-            }
             else {
-                console.log('desmarcando')
-                setChosenSeat([...chosenSeat.splice(chosenSeat.indexOf(place),1)]) // nao da certo remover desse jeito
-            } 
-            */
-            
+                chosenSeat.splice(chosenSeat.indexOf(id),1)
+                places.splice(places.indexOf(place),1)
+                setPlaces([...places])
+                setChosenSeat([...chosenSeat])
+            }
         }
         else {
             alert("Esse assento não está disponível")
@@ -65,36 +47,29 @@ function Seat({
 
 export default function Session({setDataUser, dataUser}) {
 
+    const {idSeats} = useParams()
+    const linkApiMoviesSeats = `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSeats}/seats`
     const [chosenSeat, setChosenSeat] = useState([])
     const [places, setPlaces] = useState([])
     const [seats, setSeats] = useState([])
-    const [movieTitle, setMovieTitle] = useState("")
-    const [movieImage, setMovieImage] = useState("")
-    const [movieDay, setMovieDay] = useState("")
     const [movieDate, setMovieDate] = useState("")
     const [movieTime, setMovieTime] = useState("")
-    const {idSeats} = useParams()
-
+    const [movieFeatures, setMovieFeatures] = useState({})
     
-
-    const linkApiMoviesSeats = `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSeats}/seats`
-
     useEffect(() => {
         const promise = axios.get(linkApiMoviesSeats)
 
         promise.then(answerServer => {
             setSeats(answerServer.data.seats)
-            setMovieTitle(answerServer.data.movie.title)
-            setMovieImage(answerServer.data.movie.posterURL)
-            setMovieImage(answerServer.data.movie.posterURL)
-            setMovieDay(answerServer.data.day.weekday)
-            setMovieDate(answerServer.data.day.date)
+            setMovieFeatures(answerServer.data.movie)
+            setMovieDate(answerServer.data.day)
             setMovieTime(answerServer.data.name)
         })
     }, [])
 
+    
     return (
-        <>
+        <div className = "session">
             <h1 className = "title-session">Selecione o(s) assentos(s)</h1>
             <div className = "places">
                 {seats.map((value, index)=> <Seat key = {index} place = {value.name} 
@@ -116,14 +91,14 @@ export default function Session({setDataUser, dataUser}) {
                 </div>
             </div>
             <InputDataUser chosenSeat = {chosenSeat} dataUser = {dataUser} setDataUser = {setDataUser} 
-            movieTitle = {movieTitle} movieDay = {movieDay} movieTime = {movieTime} movieDate = {movieDate}/>
+            movieTitle = {movieFeatures.title} movieDay = {movieDate.weekday} movieTime = {movieTime} movieDate = {movieDate.date} places = {places}/>
             <Footer>
-                    <div className = "frame"><img src = {movieImage} alt = "..."/></div>
+                    <div className = "frame"><img src = {movieFeatures.posterURL} alt = "..."/></div>
                     <div>
-                        <h1>{movieTitle}</h1>
-                        <h1>{movieDay} - {movieTime}</h1>
+                        <h1>{movieFeatures.title}</h1>
+                        <h1>{movieDate.weekday} - {movieTime}</h1>
                     </div>
             </Footer>
-        </>
+        </div>
     )
 }

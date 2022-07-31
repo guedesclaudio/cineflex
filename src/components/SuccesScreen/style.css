@@ -9,7 +9,7 @@
 .succes h2 {
     font-size: 24px;
     font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 28px;
     color: #247A6B;
 }
@@ -23,7 +23,7 @@
 .movie-session h3 {
     font-size: 24px;
     font-weight: 700;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 28px;
     color: #293845;
 }
@@ -31,7 +31,7 @@
 .movie-session p {
     font-size: 22px;
     font-weight: 400;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 25px;
     color: #293845;
 }

@@ -18,8 +18,6 @@ function Movie({
 
 export default function Home() {
 
-    
-
     const linkApiMovies = "https://mock-api.driven.com.br/api/v7/cineflex/movies"
     const [movies, setMovies] = useState([])
 

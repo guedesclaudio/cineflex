@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button.js"
 import axios from "axios";
 import "./style.css"
@@ -11,28 +11,40 @@ export default function InputDataUser({
     movieTitle,
     movieDay,
     movieTime,
-    movieDate
+    movieDate,
+    places
 }) {
 
+    const linkApiSendData = "https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
     const [name, setName] = useState("")
     const [cpf, setCpf] = useState("")
-    const linkApiSendData = "https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many"
     const navigate = useNavigate()
-    //console.log(chosenSeat)
 
     function receiveEvent(event) {
         event.preventDefault()
+        if (checkDataUser() === false) return
         generateObject()
-        //sendData()
+        sendData()
         navigate("/succes")
     }
 
+    function checkDataUser() {
+        setCpf(Number(cpf))
+        if (cpf.length < 11 || isNaN(cpf)) {
+            alert("Digite um cpf válido")
+            setCpf("")
+            return false
+        }
+        else if (chosenSeat.length === 0) {
+            alert("Selecione ao menos um assento")
+            return false
+        }
+    }
+
     function generateObject() {
-        console.log(chosenSeat)
-        console.log("fui chamado")
         setDataUser({ 
             ...dataUser, 
-            ids : chosenSeat.map(value => value.place), 
+            ids : places, 
             name,
             cpf, 
             movieTitle, 
@@ -43,8 +55,8 @@ export default function InputDataUser({
     }
 
     function sendData() {
-        const promise = axios.post(linkApiSendData, { //nao ta dando post
-            ids : chosenSeat.map(value => value.id), 
+        const promise = axios.post(linkApiSendData, { 
+            ids : chosenSeat, 
             name, 
             cpf,
         })
@@ -55,8 +67,7 @@ export default function InputDataUser({
             navigate("/succes")
         })
         .catch(answerServer => {
-            console.log("deu erro")
-            console.log(answerServer)
+            alert("Ops, algo deu errado! Estamos tentando descobrir o erro para melhor atendê-lo")
         })
     }
     
@@ -64,7 +75,6 @@ export default function InputDataUser({
         setName("")
         setCpf("")
     }
-    
     
     return (
         <form onSubmit = {receiveEvent}>
@@ -78,11 +88,9 @@ export default function InputDataUser({
                     <input type = "text" placeholder = "Digite seu CPF" required value = {cpf} onChange={event => setCpf(event.target.value)}/>
                 </div>
             </div>
-            
             <Button type = "submit" >
                 <h1 >Reservar assento(s)</h1>   
             </Button>
-            
         </form>
     )
 }

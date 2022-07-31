@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./style.css"
+import loading from "./loading.gif"
 
 function Movie({
     id,
@@ -33,7 +34,7 @@ export default function Home() {
         <>
             <div className = "title-select">Selecione o filme</div>
             <div className = "movies">
-                {movies.map(value => <Movie key = {value.id} id = {value.id} image = {value.posterURL}/>)}
+                {movies.length > 0 ? movies.map(value => <Movie key = {value.id} id = {value.id} image = {value.posterURL}/>) : <img src = {loading}/>}
             </div>
         </>
     )

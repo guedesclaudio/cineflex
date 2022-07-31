@@ -62,7 +62,6 @@ export default function InputDataUser({
         })
         promise
         .then(answerServer => {
-            console.log(answerServer)
             resetData()
             navigate("/succes")
         })

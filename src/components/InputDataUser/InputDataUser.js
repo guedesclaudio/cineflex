@@ -31,7 +31,7 @@ export default function InputDataUser({
 
     function checkDataUser() {
         setCpf(Number(cpf))
-        if (cpf.length < 11 || isNaN(cpf)) {
+        if (cpf.length != 11 || isNaN(cpf)) {
             alert("Digite um cpf válido")
             setCpf("")
             return false

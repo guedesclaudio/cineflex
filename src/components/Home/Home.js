@@ -9,7 +9,7 @@ function Movie({
     image
 }) {
     return (
-        <Link to = {`/session/${id}`}>
+        <Link to = {`/sessoes/${id}`}>
             <div>
                 <img src = {image}/>
             </div>

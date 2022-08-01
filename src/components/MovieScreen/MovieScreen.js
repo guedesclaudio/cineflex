@@ -17,13 +17,13 @@ function Schedule({
                 {day} - {date}
             </div>
             <div className = "select-hour">
-                <Link to = {`/seats/${time[0].id}`}>
+                <Link to = {`/assentos/${time[0].id}`}>
                     <div className = "hour">
                         {time[0].name}
                     </div>
                 </Link>
                 
-                <Link to = {`/seats/${time[1].id}`}>
+                <Link to = {`/assentos/${time[1].id}`}>
                     <div className = "hour">
                         {time[1].name}
                     </div>

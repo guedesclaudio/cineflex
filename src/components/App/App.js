@@ -20,8 +20,8 @@ export default function App() {
 			<Logo/>
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/moviescreen/:idMovie" element={<MovieScreen />}/>
-                <Route path="/session/:idSeats" element={<Session dataUser = {dataUser} setDataUser = {setDataUser}/>}/>
+				<Route path="/session/:idMovie" element={<MovieScreen />}/>
+                <Route path="/seats/:idSeats" element={<Session dataUser = {dataUser} setDataUser = {setDataUser}/>}/>
 				<Route path="/succes" element={<SuccesScreen dataUser = {dataUser}/>}/>
 			</Routes>
 		</BrowserRouter>

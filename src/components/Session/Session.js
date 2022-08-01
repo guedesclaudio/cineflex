@@ -91,7 +91,8 @@ export default function Session({setDataUser, dataUser}) {
                 </div>
             </div>
             <InputDataUser chosenSeat = {chosenSeat} dataUser = {dataUser} setDataUser = {setDataUser} 
-            movieTitle = {movieFeatures.title} movieDay = {movieDate.weekday} movieTime = {movieTime} movieDate = {movieDate.date} places = {places}/>
+            movieTitle = {movieFeatures.title} movieDay = {movieDate.weekday} movieTime = {movieTime} movieDate = {movieDate.date} 
+            places = {places}/>
             <Footer>
                     <div className = "frame"><img src = {movieFeatures.posterURL} alt = "..."/></div>
                     <div>

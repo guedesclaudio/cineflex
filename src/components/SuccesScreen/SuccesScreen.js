@@ -6,7 +6,7 @@ export default function SuccesScreen({
     dataUser
 }) {
     
-    const places = dataUser.ids 
+    const places = dataUser.ids
     
     return(
         <div >

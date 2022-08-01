@@ -19,6 +19,7 @@ export default function InputDataUser({
     const [name, setName] = useState("")
     const [cpf, setCpf] = useState("")
     const navigate = useNavigate()
+    
 
     function receiveEvent(event) {
         event.preventDefault()
@@ -46,12 +47,13 @@ export default function InputDataUser({
             ...dataUser, 
             ids : places, 
             name,
-            cpf, 
+            cpf : cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"),
             movieTitle, 
             movieDay, 
             movieTime, 
             movieDate,
         })
+        console.log(dataUser.ids)
     }
 
     function sendData() {

@@ -53,7 +53,6 @@ export default function InputDataUser({
             movieTime, 
             movieDate,
         })
-        console.log(dataUser.ids)
     }
 
     function sendData() {

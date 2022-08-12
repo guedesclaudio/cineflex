@@ -3,7 +3,7 @@
 </div>
 <br>
   
-- Criação do front-end de um aplicativo web para cinema
+- Front-end de um aplicativo web para cinema
   <br>
 - Tela exclusiva para mobile
   <br>

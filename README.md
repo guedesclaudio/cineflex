@@ -3,6 +3,7 @@
   <br>
   - Front-end de um aplicativo web para cinema com acesso a diversos filmes em cartas, sessões, lugares e horários dinâmicos. 
   <br>
+  <br>
   <div align="center">
   <a href="http://cineflex-chi.vercel.app/"><img src="./screen.png" width="400"></a>
   <br>

@@ -1,9 +1,10 @@
-import Footer from "../Footer/Footer.js"
-import "./style.css"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import Footer from "../Footer/Footer.js"
 import axios from 'axios';
+import "./style.css"
+
 
 function Schedule({
     day,

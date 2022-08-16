@@ -1,12 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from "react"
-
 import Home from "../Home/Home.js"
 import MovieScreen from "../MovieScreen/MovieScreen.js"
 import Session from "../Session/Session.js"
 import Logo from "../Logo/Logo.js"
 import SuccesScreen from "../SuccesScreen/SuccesScreen.js"
-
 import "./style.css"
 import "./reset.css"
 

@@ -34,7 +34,7 @@ export default function Home() {
         <>
             <div className = "title-select">Selecione o filme</div>
             <div className = "movies">
-                {movies.length > 0 ? movies.map(value => <Movie key = {value.id} id = {value.id} image = {value.posterURL}/>) : <img src = {loading}/>}
+                {movies.length > 0 ? movies.map(value => <Movie key = {value.id} id = {value.id} image = {value.posterURL}/>) : <img src = {loading} className = "load"/>}
             </div>
         </>
     )

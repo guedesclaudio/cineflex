@@ -1,6 +1,8 @@
 <div align="center">
   <h1>CINEFLEX</h1>
   <br>
+  - Front-end de um aplicativo web para cinema com acesso a diversos filmes em cartas, sessões, lugares e horários dinâmicos. 
+  <br>
   <div align="center">
   <a href="http://cineflex-chi.vercel.app/"><img src="./screen.png" width="400"></a>
   <br>
@@ -10,14 +12,12 @@
 </div>
 <br>
   
-- Front-end de um aplicativo web para cinema com acesso a diversos filmes em cartas, sessões, lugares e horários dinâmicos. 
-  <br>
-
 # Funcionalidades
 - Tela com foco principal para mobile
 - Dados alimentados por uma API
 - Conexão com a API utilizando axios
-- Confirmação de reserva somente com os dados preenchidos corretamente
+- Validação dos dados do usuário
+- Tela de sucesso para confirmação do pedido
 
 # Tecnologias utilizadas
 - HTML5
@@ -25,6 +25,7 @@
 - JAVASCRIPT
 - REACT
 - AXIOS
+- REACT-ROUTER-DOM
 - GIT
 - GITHUB
 - VSCODE
